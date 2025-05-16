@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title th:text="${product.name}">Detail</title></head>
+<body>
+<h1 th:text="${product.name}">Product Name</h1>
+<p th:text="${product.description}">desc</p>
+<p>Price: <span th:text="${product.price}"></span> JPY</p>
+<a th:href="${product.shopeeUrl}">Buy on Shopee</a>
+</body>
+</html>
