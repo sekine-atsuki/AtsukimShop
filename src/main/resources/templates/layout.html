@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kyoto Uji Matcha</title>
+  <!-- Tailwind CSS CDN (開発用途) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="antialiased font-sans text-gray-800">
+<!-- Hero / ブランドヘッダー -->
+<header class="bg-gradient-to-b from-green-800 to-green-600 text-white">
+  <div class="max-w-4xl mx-auto px-6 py-16 flex flex-col items-center text-center gap-4">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Kyoto Uji Matcha</h1>
+    <p class="text-lg md:text-xl opacity-90">Experience the pure taste of Japan&#39;s finest green tea</p>
+    <a th:href="@{/products/1}" class="mt-6 inline-block bg-white/90 hover:bg-white text-green-900 font-semibold px-8 py-3 rounded-2xl shadow-lg transition">Buy on Shopee</a>
+  </div>
+</header>
+
+<!-- 商品カードセクション -->
+<section class="max-w-5xl mx-auto px-6 py-16" id="product">
+  <h2 class="text-3xl font-semibold text-green-800 mb-8">Our Product</h2>
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <!-- ループ例 -->
+    <article th:each="p : ${products}" class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
+      <img th:src="@{/img/{file}(file=${p.imageFileName})}" alt="" class="h-48 w-full object-cover" />
+      <div class="p-6 flex-1 flex flex-col">
+        <h3 class="text-xl font-semibold text-green-800 mb-2" th:text="${p.name}">Premium Matcha 50g</h3>
+        <p class="text-sm flex-1" th:text="${p.shortDescription}">Stone‑ground, vibrant emerald matcha from Kyoto.</p>
+        <a th:href="@{'/products/' + ${p.id}}" class="mt-4 self-start text-green-700 hover:underline font-medium">See details →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 会社・抹茶紹介セクション -->
+<section class="bg-green-50 py-16" id="about">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl font-semibold text-green-800 mb-6">Why Our Matcha?</h2>
+    <p class="leading-relaxed text-gray-700 mb-4">
+      京都宇治の茶園で丁寧に栽培された一番茶のみを使用。伝統的な石臼挽きにより、鮮やかな緑色と豊かな香りを実現しています。
+    </p>
+    <p class="leading-relaxed text-gray-700">
+      ラテ・スイーツ・点て茶まで、あらゆるレシピでご堪能ください。
+    </p>
+  </div>
+</section>
+
+<!-- 問い合わせフォームプレースホルダ -->
+<section class="max-w-3xl mx-auto px-6 py-16" id="contact">
+  <h2 class="text-3xl font-semibold text-green-800 mb-6">Contact Us</h2>
+  <form th:action="@{/contact}" method="post" class="grid gap-6">
+    <div>
+      <label for="name" class="block text-gray-700 mb-1">Name</label>
+      <input id="name" name="name" type="text" required class="w-full rounded-lg border-gray-300 focus:ring-green-700 focus:border-green-700" />
+    </div>
+    <div>
+      <label for="email" class="block text-gray-700 mb-1">Email</label>
+      <input id="email" name="email" type="email" required class="w-full rounded-lg border-gray-300 focus:ring-green-700 focus:border-green-700" />
+    </div>
+    <div>
+      <label for="message" class="block text-gray-700 mb-1">Message</label>
+      <textarea id="message" name="message" rows="4" required class="w-full rounded-lg border-gray-300 focus:ring-green-700 focus:border-green-700"></textarea>
+    </div>
+    <button type="submit" class="bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-2xl font-semibold shadow">Send</button>
+  </form>
+</section>
+
+<footer class="bg-green-800 text-green-100 text-sm text-center py-6">
+  © <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> Kyoto Uji Matcha. All rights reserved.
+</footer>
+</body>
+</html>
