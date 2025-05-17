@@ -33,4 +33,11 @@ public class ProductController {
         model.addAttribute("product", repo.findById(id));
         return "products/detail"; // templates/products/detail.html
     }
+
+    /** 問合せフォーム */
+    @GetMapping("/contact")
+    public String contact(Model model) {
+        model.addAttribute("products", repo.findAll());
+        return "products/contact";   // templates/products/list.html
+    }
 }
