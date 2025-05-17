@@ -13,6 +13,13 @@ public class ProductController {
         this.repo = repo;
     }
 
+    /** ホーム画面 */
+    @GetMapping("/home")
+    public String home(Model model) {
+        model.addAttribute("products", repo.findAll());
+        return "products/home";   // templates/products/list.html
+    }
+
     /** 商品一覧 */
     @GetMapping("/products")
     public String list(Model model) {

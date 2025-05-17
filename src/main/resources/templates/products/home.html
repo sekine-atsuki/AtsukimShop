@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<section layout:fragment="content" class="flex flex-col items-center justify-center py-24 bg-green-50">
+  <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-6 text-center">
+    Bringing Japan's Best to the World
+  </h2>
+  <p class="max-w-xl text-lg text-gray-800 text-center mb-8 leading-relaxed">
+    We live in Japan and truly value food, health, and wellness.
+    With care, we carefully select high-quality Japanese products and are passionate about sharing them with people around the world.
+  </p>
+  <a th:href="@{/products}"
+     class="px-8 py-3 bg-green-700 hover:bg-green-800 text-white rounded-full text-lg font-semibold shadow transition">
+    View Products
+  </a>
+</section>
+</html>
