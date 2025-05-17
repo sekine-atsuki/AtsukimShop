@@ -16,7 +16,7 @@
 <body class="bg-green-50 font-sans antialiased text-green-900">
 <header class="bg-gradient-to-r from-green-700 to-green-400 text-white p-8 shadow-md">
     <div class="max-w-4xl mx-auto flex justify-between items-center">
-        <a th:href="@{/}" class="text-3xl font-bold tracking-tight">Kyoto Uji Matcha</a>
+        <a th:href="@{/}" class="text-3xl font-bold tracking-tight">Atsukim Shop</a>
         <nav class="flex gap-8 items-center">
             <!-- サイト内ナビ -->
             <a th:href="@{/home}" class="text-white hover:text-green-200 px-3 py-1 rounded transition">Home</a>
@@ -27,7 +27,7 @@
 </header>
 <main layout:fragment="content" class="max-w-5xl mx-auto p-6"></main>
 <footer class="bg-green-700 text-green-100 text-center py-6 mt-12 shadow-inner">
-    <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> Kyoto Uji Matcha. All rights reserved.
+    <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> Atsukim Shop. All rights reserved.
 </footer>
 </body>
 </html>
