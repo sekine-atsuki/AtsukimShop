@@ -15,10 +15,10 @@ public class ProductRepository {
         // ダミーデータ 1 件だけ登録
         Product p = new Product();
         p.setId(1L);
-        p.setName("京都宇治抹茶（50g）");
-        p.setShortDescription("石臼挽き、香り豊かな宇治産100%");
+        p.setName("Kyoto Uji Matcha (50g)");
+        p.setShortDescription("Stone-ground, aromatic, 100% Uji-grown");
         p.setPrice(1200);
-        p.setImageUrl("/img/ujima.jpg");
+        p.setImageFileName("ujima.jpg");
         p.setShopeeUrl("https://shopee....");
         store.put(1L, p);
     }

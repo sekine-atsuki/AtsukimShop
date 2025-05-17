@@ -7,7 +7,6 @@ public class Product {
     private String shortDescription;
     private String imageFileName;
     private int price;        // 東南アジア向けに通貨は後で拡張
-    private String imageUrl;  // static フォルダに置く予定
     private String shopeeUrl; // Shopee 商品ページへのリンク
 
 
@@ -58,14 +57,6 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public String getShopeeUrl() {
