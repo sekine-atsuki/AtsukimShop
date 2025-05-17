@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-home}">
+<head>
+  <title layout:fragment="pageTitle">Kyoto Uji Matcha</title>
+</head>
+<section layout:fragment="content">
+  <h1 class="text-4xl font-bold text-green-700 mb-6 text-center">ようこそ！京都宇治抹茶の世界へ</h1>
+  <p class="text-center mb-10 text-lg">厳選された宇治抹茶をお届けしています。</p>
+  <div class="flex justify-center">
+    <a th:href="@{/products}" class="bg-green-700 text-white px-8 py-3 rounded-2xl font-bold hover:bg-green-800 transition">
+      商品一覧を見る
+    </a>
+  </div>
+</section>
+</html>
