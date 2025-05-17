@@ -16,9 +16,9 @@ public class ProductRepository {
         Product p = new Product();
         p.setId(1L);
         p.setName("京都宇治抹茶（50g）");
-        p.setDescription("石臼挽き、香り豊かな宇治産100%");
+        p.setShortDescription("石臼挽き、香り豊かな宇治産100%");
         p.setPrice(1200);
-        p.setImageUrl("/img/ujimatcha.jpg");
+        p.setImageUrl("/img/ujima.jpg");
         p.setShopeeUrl("https://shopee....");
         store.put(1L, p);
     }

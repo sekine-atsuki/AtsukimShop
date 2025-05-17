@@ -4,6 +4,8 @@ public class Product {
     private Long id;
     private String name;
     private String description;
+    private String shortDescription;
+    private String imageFileName;
     private int price;        // 東南アジア向けに通貨は後で拡張
     private String imageUrl;  // static フォルダに置く予定
     private String shopeeUrl; // Shopee 商品ページへのリンク
@@ -18,6 +20,14 @@ public class Product {
         this.id = id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getName() {
         return name;
     }
@@ -26,12 +36,20 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getShortDescription() {
+        return shortDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
     }
 
     public int getPrice() {
