@@ -16,12 +16,6 @@ public class ProductController {
         this.mailSender = mailSender; // ★追加
     }
 
-    @GetMapping("/home")
-    public String home(Model model) {
-        model.addAttribute("products", repo.findAll());
-        return "products/home";
-    }
-
     @GetMapping("/products")
     public String list(Model model) {
         model.addAttribute("products", repo.findAll());
