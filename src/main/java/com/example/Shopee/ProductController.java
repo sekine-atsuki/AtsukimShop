@@ -1,43 +1,62 @@
 package com.example.Shopee;
 
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @Controller
 public class ProductController {
     private final ProductRepository repo;
+    private final JavaMailSender mailSender;  // ★追加
 
-    public ProductController(ProductRepository repo) {
+    public ProductController(ProductRepository repo, JavaMailSender mailSender) { // ★追加
         this.repo = repo;
+        this.mailSender = mailSender; // ★追加
     }
 
-    /** ホーム画面 */
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("products", repo.findAll());
-        return "products/home";   // templates/products/list.html
+        return "products/home";
     }
 
-    /** 商品一覧 */
     @GetMapping("/products")
     public String list(Model model) {
         model.addAttribute("products", repo.findAll());
-        return "products/list";   // templates/products/list.html
+        return "products/list";
     }
 
-    /** 商品詳細 */
     @GetMapping("/products/{id}")
     public String detail(@PathVariable Long id, Model model) {
         model.addAttribute("product", repo.findById(id));
-        return "products/detail"; // templates/products/detail.html
+        return "products/detail";
     }
 
-    /** 問合せフォーム */
     @GetMapping("/contact")
     public String contact(Model model) {
-        model.addAttribute("products", repo.findAll());
-        return "products/contact";   // templates/products/list.html
+        model.addAttribute("product", repo.findAll());
+        return "contact/form";
+    }
+
+    @PostMapping("/contact")
+    public String sendContact(
+            @RequestParam String name,
+            @RequestParam String country,
+            @RequestParam String email,
+            @RequestParam String message
+    ) {
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo("your-email@example.com");
+        mail.setSubject("New Contact from Website");
+        mail.setText(
+                "Name: " + name + "\n" +
+                        "Country: " + country + "\n" +
+                        "Email: " + email + "\n" +
+                        "Message:\n" + message
+        );
+        mailSender.send(mail);
+        return "contact/success";
     }
 }
