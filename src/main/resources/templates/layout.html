@@ -14,19 +14,44 @@
     </style>
 </head>
 <body class="bg-green-50 font-sans antialiased text-green-900">
-<header class="bg-gradient-to-r from-green-700 to-green-400 text-white p-8 shadow-md">
+<header class="bg-gradient-to-r from-green-700 to-green-400 text-white p-6 shadow-md">
     <div class="max-w-4xl mx-auto flex justify-between items-center">
-        <a th:href="@{/}" class="text-3xl font-bold tracking-tight">Atsukim Shop</a>
-        <nav class="flex flex-wrap gap-3 sm:gap-8 items-center justify-center sm:justify-end">
-            <!-- サイト内ナビ -->
-            <a th:href="@{/}" class="text-white hover:text-green-200 px-3 py-1 rounded transition text-lg">Home</a>
-            <a th:href="@{/products}" class="text-white hover:text-green-200 px-3 py-1 rounded transition text-lg">Product List</a>
-            <a th:href="'https://shopee.com/product-link'" target="_blank"
+        <a href="/" class="text-3xl font-bold tracking-tight">Atsukim Shop</a>
+        <!-- ハンバーガーアイコン（スマホ表示のみ） -->
+        <button id="menu-btn" class="sm:hidden flex flex-col space-y-1 focus:outline-none">
+            <span class="block w-7 h-1 bg-white rounded"></span>
+            <span class="block w-7 h-1 bg-white rounded"></span>
+            <span class="block w-7 h-1 bg-white rounded"></span>
+        </button>
+        <!-- ナビゲーション -->
+        <nav id="menu" class="hidden sm:flex gap-8 items-center">
+            <a href="/" class="text-white hover:text-green-200 px-3 py-1 rounded transition text-lg">Home</a>
+            <a href="/products" class="text-white hover:text-green-200 px-3 py-1 rounded transition text-lg">Product List</a>
+            <a href="https://shopee.com/product-link" target="_blank"
                class="text-white hover:text-green-200 px-3 py-1 rounded transition text-lg">Buy Now</a>
-            <a th:href="@{/contact}" class="text-white hover:text-green-200 px-3 py-1 rounded transition text-lg">Contact Us</a>
+            <a href="/contact" class="text-white hover:text-green-200 px-3 py-1 rounded transition text-lg">Contact Us</a>
         </nav>
     </div>
 </header>
+
+<script>
+    // ハンバーガーメニュー開閉用
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      menu.classList.toggle('flex-col');
+      menu.classList.toggle('absolute');
+      menu.classList.toggle('top-20'); // ヘッダー下に
+      menu.classList.toggle('right-4');
+      menu.classList.toggle('bg-green-700');
+      menu.classList.toggle('p-4');
+      menu.classList.toggle('rounded-lg');
+      menu.classList.toggle('z-50');
+      menu.classList.toggle('w-40');
+    });
+</script>
 <main layout:fragment="content" class="max-w-5xl mx-auto p-6"></main>
 <footer class="bg-green-700 text-green-100 text-center py-6 mt-12 shadow-inner">
     <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2025</span> Atsukim Shop. All rights reserved.
